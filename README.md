@@ -138,7 +138,7 @@ Info.BackgroundTransparency = 1
 Info.Position = UDim2.new(0, 0, 0.88, 0)
 Info.Size = UDim2.new(1, 0, 0, 30)
 Info.Font = Enum.Font.Gotham
-Info.Text = "Key: SPECTRAL2025 | by batata3ftt"
+Info.Text = "Criado por batata3ftt"
 Info.TextColor3 = Color3.fromRGB(150, 150, 150)
 Info.TextSize = 10
 
