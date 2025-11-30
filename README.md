@@ -111,7 +111,7 @@ VerifyBtn.BorderSizePixel = 0
 VerifyBtn.Position = UDim2.new(0.1, 0, 0.55, 0)
 VerifyBtn.Size = UDim2.new(0.8, 0, 0, 40)
 VerifyBtn.Font = Enum.Font.GothamBold
-VerifyBtn.Text = "✓ VERIFICAR KEY"
+VerifyBtn.Text = "VERIFICAR KEY"
 VerifyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 VerifyBtn.TextSize = 16
 
