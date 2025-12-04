@@ -13,7 +13,7 @@ local player = Players.LocalPlayer
 
 -- Configurações
 local KEY_CORRETA = "SPECTRAL2025"
-local SPECTRAL_URL = "https://raw.githubusercontent.com/batata3ftt/Spectral-hub/refs/heads/main/Spectral"
+local SPECTRAL_URL = "https://raw.githubusercontent.com/batata3ftt/Script-completo-04-12-2025-OBFUSCADO/refs/heads/main/Obfuscado"
 
 -- Criar GUI
 print("📋 Criando interface...")
