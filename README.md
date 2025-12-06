@@ -4,7 +4,7 @@
 wait(1) -- Espera o jogo carregar
 
 print("=" .. string.rep("=", 50))
-print("🔐 SPECTRAL HUB - KEY SYSTEM")
+print("🔐 BATATA HUB - KEY SYSTEM")
 print("=" .. string.rep("=", 50))
 
 local TweenService = game:GetService("TweenService")
@@ -12,8 +12,9 @@ local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
 -- Configurações
-local KEY_CORRETA = "SPECTRAL2025"
-local SPECTRAL_URL = "https://raw.githubusercontent.com/batata3ftt/Script-completo-04-12-2025-OBFUSCADO/refs/heads/main/Obfuscado"
+local KEY_CORRETA = "BATATA2025"
+local SPECTRAL_URL =
+"https://raw.githubusercontent.com/batata3ftt/script-completo-04-12-2025/refs/heads/main/Script%20sem%20key"
 
 -- Criar GUI
 print("📋 Criando interface...")
@@ -59,7 +60,7 @@ Title.Parent = Frame
 Title.BackgroundTransparency = 1
 Title.Size = UDim2.new(1, 0, 0, 50)
 Title.Font = Enum.Font.GothamBold
-Title.Text = "SPECTRAL HUB"
+Title.Text = "BATATA HUB"
 Title.TextColor3 = Color3.fromRGB(255, 0, 0)
 Title.TextSize = 28
 
@@ -138,7 +139,7 @@ Info.BackgroundTransparency = 1
 Info.Position = UDim2.new(0, 0, 0.88, 0)
 Info.Size = UDim2.new(1, 0, 0, 30)
 Info.Font = Enum.Font.Gotham
-Info.Text = "Criado por batata3ftt"
+Info.Text = "Criado por batata"
 Info.TextColor3 = Color3.fromRGB(150, 150, 150)
 Info.TextSize = 10
 
@@ -185,7 +186,7 @@ local function checkKey()
     
     if input == KEY_CORRETA then
         notify("✅ KEY CORRETA!", Color3.fromRGB(0, 255, 0))
-        print("✅ Key correta! Carregando Spectral Hub...")
+        print("✅ Key correta! Carregando BATATA HUB...")
         
         -- Salvar key
         if writefile then
@@ -202,8 +203,8 @@ local function checkKey()
         task.wait(0.6)
         ScreenGui:Destroy()
         
-        -- Carregar Spectral Hub
-        print("🚀 Executando Spectral Hub...")
+        -- Carregar BATATA HUB
+        print("🚀 Executando BATATA HUB...")
         local success, err = pcall(function()
             loadstring(game:HttpGet(SPECTRAL_URL))()
         end)
