@@ -1,36 +1,31 @@
-
 -- ═══════════════════════════════════════════════════════════
---     BATATA HUB - SISTEMA DE KEY PREMIUM v2.3
+--     SYLAX HUB - SISTEMA DE KEY PREMIUM v2.3
 --     Criado por: batata
 -- ═══════════════════════════════════════════════════════════
 
 wait(0.5)
 
--- ════════════════ SERVIÇOS ════════════════
 local TweenService = game:GetService("TweenService")
 local Players = game:GetService("Players")
 local player = Players.LocalPlayer
 
--- ════════════════ CONFIGURAÇÕES ════════════════
 local CONFIG = {
     KEY = "BATATA2025",
     HUB_URL = "https://raw.githubusercontent.com/batata3ftt/script-completo-04-12-2025/refs/heads/main/Script%20sem%20key",
     
-    -- ⚠️ IDs DAS IMAGENS ⚠️
-    BACKGROUND_IMAGE = "rbxassetid://140370248943220",
-    LOGO_IMAGE = "rbxassetid://133584317870203", -- ← NOVO CADEADO
+    BACKGROUND_IMAGE = "rbxassetid://129937097692565",
+    LOGO_IMAGE = "rbxassetid://127118484247381",
     DISCORD_ICON = "rbxassetid://95649005720075",
     
     DISCORD_USERNAME = "hunter.exe7133",
     
-    -- Cores do tema azul
     COLORS = {
-        Primary = Color3.fromRGB(0, 122, 255),
-        Secondary = Color3.fromRGB(10, 132, 255),
+        Primary = Color3.fromRGB(168, 85, 247),
+        Secondary = Color3.fromRGB(124, 58, 237),
         Background = Color3.fromRGB(15, 15, 20),
         Surface = Color3.fromRGB(25, 25, 35),
         Text = Color3.fromRGB(255, 255, 255),
-        TextSecondary = Color3.fromRGB(160, 160, 180),
+        TextSecondary = Color3.fromRGB(190, 170, 255),
         Success = Color3.fromRGB(52, 211, 153),
         Error = Color3.fromRGB(239, 68, 68),
         Warning = Color3.fromRGB(251, 191, 36),
@@ -38,7 +33,6 @@ local CONFIG = {
     }
 }
 
--- ════════════════ CRIAR SCREEN GUI ════════════════
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "BatataKeySystem_" .. tick()
 ScreenGui.ResetOnSpawn = false
@@ -52,13 +46,11 @@ if not ScreenGui.Parent then
     ScreenGui.Parent = player:WaitForChild("PlayerGui")
 end
 
--- ════════════════ BLUR DE FUNDO ════════════════
 local Blur = Instance.new("BlurEffect")
 Blur.Parent = game:GetService("Lighting")
 Blur.Size = 0
 TweenService:Create(Blur, TweenInfo.new(0.5), {Size = 15}):Play()
 
--- ════════════════ FRAME PRINCIPAL (MENOR) ════════════════
 local MainFrame = Instance.new("Frame")
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
@@ -66,14 +58,13 @@ MainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 MainFrame.BackgroundColor3 = CONFIG.COLORS.Background
 MainFrame.BorderSizePixel = 0
 MainFrame.Position = UDim2.new(0.5, 0, 0.5, 0)
-MainFrame.Size = UDim2.new(0, 320, 0, 380) -- MENOR: 320x380
+MainFrame.Size = UDim2.new(0, 320, 0, 380)
 MainFrame.ClipsDescendants = true
 
 local MainCorner = Instance.new("UICorner")
 MainCorner.CornerRadius = UDim.new(0, 16)
 MainCorner.Parent = MainFrame
 
--- Borda animada
 local BorderGradient = Instance.new("UIStroke")
 BorderGradient.Parent = MainFrame
 BorderGradient.Thickness = 2.5
@@ -95,21 +86,21 @@ task.spawn(function()
     end
 end)
 
--- ════════════════ IMAGEM DE FUNDO ════════════════
+-- FUNDO PREENCHENDO TODO O FRAME
 local BackgroundImage = Instance.new("ImageLabel")
 BackgroundImage.Parent = MainFrame
 BackgroundImage.BackgroundTransparency = 1
 BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
+BackgroundImage.Position = UDim2.new(0, 0, 0, 0)
 BackgroundImage.Image = CONFIG.BACKGROUND_IMAGE
 BackgroundImage.ImageTransparency = 0.85
-BackgroundImage.ScaleType = Enum.ScaleType.Crop
+BackgroundImage.ScaleType = Enum.ScaleType.Stretch
 BackgroundImage.ZIndex = 1
 
 local BgCorner = Instance.new("UICorner")
 BgCorner.CornerRadius = UDim.new(0, 16)
 BgCorner.Parent = BackgroundImage
 
--- Overlay escuro
 local Overlay = Instance.new("Frame")
 Overlay.Parent = MainFrame
 Overlay.BackgroundColor3 = CONFIG.COLORS.Background
@@ -121,7 +112,6 @@ local OverlayCorner = Instance.new("UICorner")
 OverlayCorner.CornerRadius = UDim.new(0, 16)
 OverlayCorner.Parent = Overlay
 
--- ════════════════ CONTAINER DE CONTEÚDO ════════════════
 local ContentFrame = Instance.new("Frame")
 ContentFrame.Parent = MainFrame
 ContentFrame.BackgroundTransparency = 1
@@ -129,7 +119,7 @@ ContentFrame.Position = UDim2.new(0, 20, 0, 20)
 ContentFrame.Size = UDim2.new(1, -40, 1, -40)
 ContentFrame.ZIndex = 3
 
--- ════════════════ LOGO 3D (CADEADO NOVO) ════════════════
+-- CIRCULO FIXO
 local LogoFrame = Instance.new("Frame")
 LogoFrame.Parent = ContentFrame
 LogoFrame.AnchorPoint = Vector2.new(0.5, 0)
@@ -137,6 +127,7 @@ LogoFrame.BackgroundColor3 = CONFIG.COLORS.Primary
 LogoFrame.BackgroundTransparency = 0.95
 LogoFrame.Position = UDim2.new(0.5, 0, 0, 0)
 LogoFrame.Size = UDim2.new(0, 60, 0, 60)
+LogoFrame.ClipsDescendants = true
 
 local LogoCorner = Instance.new("UICorner")
 LogoCorner.CornerRadius = UDim.new(1, 0)
@@ -147,6 +138,7 @@ LogoStroke.Parent = LogoFrame
 LogoStroke.Color = CONFIG.COLORS.Primary
 LogoStroke.Thickness = 2.5
 
+-- IMAGEM FLUTUANTE DENTRO DO CIRCULO
 local LogoImage = Instance.new("ImageLabel")
 LogoImage.Parent = LogoFrame
 LogoImage.BackgroundTransparency = 1
@@ -154,15 +146,15 @@ LogoImage.Size = UDim2.new(0.7, 0, 0.7, 0)
 LogoImage.Position = UDim2.new(0.15, 0, 0.15, 0)
 LogoImage.Image = CONFIG.LOGO_IMAGE
 LogoImage.ScaleType = Enum.ScaleType.Fit
+LogoImage.ZIndex = 2
 
--- ════════════════ TÍTULO ════════════════
 local Title = Instance.new("TextLabel")
 Title.Parent = ContentFrame
 Title.BackgroundTransparency = 1
 Title.Position = UDim2.new(0, 0, 0, 70)
 Title.Size = UDim2.new(1, 0, 0, 26)
 Title.Font = Enum.Font.GothamBold
-Title.Text = "BATATA HUB"
+Title.Text = "SYLAX HUB"
 Title.TextColor3 = CONFIG.COLORS.Text
 Title.TextSize = 22
 
@@ -175,7 +167,6 @@ TitleGradient.Color = ColorSequence.new{
 }
 TitleGradient.Rotation = 45
 
--- ════════════════ SUBTÍTULO ════════════════
 local Subtitle = Instance.new("TextLabel")
 Subtitle.Parent = ContentFrame
 Subtitle.BackgroundTransparency = 1
@@ -186,7 +177,6 @@ Subtitle.Text = "Sistema de Autenticação"
 Subtitle.TextColor3 = CONFIG.COLORS.TextSecondary
 Subtitle.TextSize = 9
 
--- ════════════════ DIVISOR ════════════════
 local Divider = Instance.new("Frame")
 Divider.Parent = ContentFrame
 Divider.BackgroundColor3 = CONFIG.COLORS.Primary
@@ -195,7 +185,6 @@ Divider.BorderSizePixel = 0
 Divider.Position = UDim2.new(0.25, 0, 0, 118)
 Divider.Size = UDim2.new(0.5, 0, 0, 2)
 
--- ════════════════ LABEL DO INPUT ════════════════
 local InputLabel = Instance.new("TextLabel")
 InputLabel.Parent = ContentFrame
 InputLabel.BackgroundTransparency = 1
@@ -207,7 +196,6 @@ InputLabel.TextColor3 = CONFIG.COLORS.Text
 InputLabel.TextSize = 9
 InputLabel.TextXAlignment = Enum.TextXAlignment.Left
 
--- ════════════════ INPUT DA KEY ════════════════
 local InputFrame = Instance.new("Frame")
 InputFrame.Parent = ContentFrame
 InputFrame.BackgroundColor3 = CONFIG.COLORS.Surface
@@ -249,7 +237,6 @@ KeyInput.TextSize = 11
 KeyInput.TextXAlignment = Enum.TextXAlignment.Left
 KeyInput.ClearTextOnFocus = false
 
--- ════════════════ BOTÃO VERIFICAR ════════════════
 local VerifyButton = Instance.new("TextButton")
 VerifyButton.Parent = ContentFrame
 VerifyButton.BackgroundColor3 = CONFIG.COLORS.Primary
@@ -274,12 +261,11 @@ ButtonGradient.Color = ColorSequence.new{
 }
 ButtonGradient.Rotation = 45
 
--- ════════════════ BOTÃO GET DISCORD (EMBAIXO) ════════════════
 local DiscordButton = Instance.new("TextButton")
 DiscordButton.Parent = ContentFrame
 DiscordButton.BackgroundColor3 = CONFIG.COLORS.Discord
 DiscordButton.BorderSizePixel = 0
-DiscordButton.Position = UDim2.new(0, 0, 0, 244) -- LOGO EMBAIXO
+DiscordButton.Position = UDim2.new(0, 0, 0, 244)
 DiscordButton.Size = UDim2.new(1, 0, 0, 38)
 DiscordButton.AutoButtonColor = false
 DiscordButton.Font = Enum.Font.GothamBold
@@ -309,7 +295,6 @@ DiscordText.TextColor3 = Color3.fromRGB(255, 255, 255)
 DiscordText.TextSize = 12
 DiscordText.TextXAlignment = Enum.TextXAlignment.Left
 
--- ════════════════ STATUS ════════════════
 local StatusLabel = Instance.new("TextLabel")
 StatusLabel.Parent = ContentFrame
 StatusLabel.BackgroundTransparency = 1
@@ -321,7 +306,6 @@ StatusLabel.TextColor3 = CONFIG.COLORS.Warning
 StatusLabel.TextSize = 10
 StatusLabel.TextTransparency = 1
 
--- ════════════════ FOOTER ════════════════
 local Footer = Instance.new("TextLabel")
 Footer.Parent = ContentFrame
 Footer.BackgroundTransparency = 1
@@ -333,7 +317,6 @@ Footer.TextColor3 = CONFIG.COLORS.TextSecondary
 Footer.TextSize = 8
 Footer.TextTransparency = 0.5
 
--- ════════════════ BOTÃO X (SUPERIOR DIREITO) ════════════════
 local CloseButton = Instance.new("TextButton")
 CloseButton.Parent = MainFrame
 CloseButton.AnchorPoint = Vector2.new(1, 0)
@@ -358,15 +341,11 @@ CloseStroke.Parent = CloseButton
 CloseStroke.Color = CONFIG.COLORS.Error
 CloseStroke.Thickness = 1.5
 
--- ════════════════ FUNÇÕES ════════════════
-
 local function showNotification(text, color, icon)
     StatusLabel.Text = icon .. " " .. text
     StatusLabel.TextColor3 = color
     StatusLabel.TextTransparency = 0
-    
     TweenService:Create(StatusLabel, TweenInfo.new(0.3), {TextTransparency = 0}):Play()
-    
     task.delay(3, function()
         TweenService:Create(StatusLabel, TweenInfo.new(0.5), {TextTransparency = 1}):Play()
     end)
@@ -386,42 +365,39 @@ end
 
 local function verifyKey()
     local enteredKey = KeyInput.Text
-    
+
     if enteredKey == "" then
         showNotification("Digite uma key!", CONFIG.COLORS.Warning, "⚠️")
         shakeFrame(InputFrame)
         return
     end
-    
+
     VerifyButton.Text = "VERIFICANDO..."
     VerifyButton.BackgroundColor3 = CONFIG.COLORS.Secondary
-    
     task.wait(0.8)
-    
+
     if enteredKey == CONFIG.KEY then
         showNotification("Key verificada!", CONFIG.COLORS.Success, "✓")
         VerifyButton.Text = "✓ VERIFICADO"
         VerifyButton.BackgroundColor3 = CONFIG.COLORS.Success
-        
-        if writefile then 
-            pcall(function() 
-                writefile("BatataKey.txt", enteredKey) 
-            end) 
+
+        if writefile then
+            pcall(function() writefile("BatataKey.txt", enteredKey) end)
         end
-        
+
         task.wait(1)
-        
+
         TweenService:Create(MainFrame, TweenInfo.new(0.5, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
             Size = UDim2.new(0, 0, 0, 0),
             Rotation = 180
         }):Play()
-        
+
         TweenService:Create(Blur, TweenInfo.new(0.5), {Size = 0}):Play()
-        
+
         task.wait(0.6)
         ScreenGui:Destroy()
         Blur:Destroy()
-        
+
         loadstring(game:HttpGet(CONFIG.HUB_URL))()
     else
         showNotification("Key incorreta!", CONFIG.COLORS.Error, "✕")
@@ -436,28 +412,21 @@ local function copyDiscord()
     if setclipboard then
         setclipboard(CONFIG.DISCORD_USERNAME)
         showNotification("Discord copiado!", CONFIG.COLORS.Success, "✓")
-        
         DiscordButton.BackgroundColor3 = CONFIG.COLORS.Success
         DiscordText.Text = "✓ COPIADO!"
-        
         task.wait(1.5)
-        
         DiscordButton.BackgroundColor3 = CONFIG.COLORS.Discord
         DiscordText.Text = "GET DISCORD"
     else
-        showNotification("Executor não suporta clipboard!", CONFIG.COLORS.Error, "✕")
+        showNotification("Executor nao suporta clipboard!", CONFIG.COLORS.Error, "✕")
     end
 end
-
--- ════════════════ EVENTOS ════════════════
 
 VerifyButton.MouseButton1Click:Connect(verifyKey)
 DiscordButton.MouseButton1Click:Connect(copyDiscord)
 
 KeyInput.FocusLost:Connect(function(enterPressed)
-    if enterPressed then
-        verifyKey()
-    end
+    if enterPressed then verifyKey() end
 end)
 
 CloseButton.MouseButton1Click:Connect(function()
@@ -467,8 +436,6 @@ CloseButton.MouseButton1Click:Connect(function()
     ScreenGui:Destroy()
     Blur:Destroy()
 end)
-
--- ════════════════ HOVER EFFECTS ════════════════
 
 VerifyButton.MouseEnter:Connect(function()
     TweenService:Create(VerifyButton, TweenInfo.new(0.2), {
@@ -526,8 +493,6 @@ InputFrame.MouseLeave:Connect(function()
     }):Play()
 end)
 
--- ════════════════ ANIMAÇÃO DE ENTRADA ════════════════
-
 MainFrame.Size = UDim2.new(0, 0, 0, 0)
 MainFrame.Rotation = -180
 
@@ -536,7 +501,6 @@ TweenService:Create(MainFrame, TweenInfo.new(0.7, Enum.EasingStyle.Back, Enum.Ea
     Rotation = 0
 }):Play()
 
--- Fade-in dos elementos
 for _, element in pairs(ContentFrame:GetChildren()) do
     if element:IsA("GuiObject") then
         element.BackgroundTransparency = 1
@@ -554,7 +518,6 @@ for i, element in pairs(ContentFrame:GetChildren()) do
             TweenService:Create(element, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
                 BackgroundTransparency = element.Name == "InputFrame" and 0 or 1
             }):Play()
-            
             if element:IsA("TextLabel") or element:IsA("TextButton") then
                 TweenService:Create(element, TweenInfo.new(0.5), {
                     TextTransparency = element.Name == "Footer" and 0.5 or 0
@@ -565,33 +528,20 @@ for i, element in pairs(ContentFrame:GetChildren()) do
     end
 end
 
--- ════════════════ ANIMAÇÃO 3D DO CADEADO ════════════════
-
+-- IMAGEM FLUTUANTE DENTRO DO CIRCULO (circulo fica parado)
 task.spawn(function()
-    while LogoFrame.Parent do
-        -- Rotação 360°
-        TweenService:Create(LogoFrame, TweenInfo.new(2.5, Enum.EasingStyle.Linear), {
-            Rotation = 360
+    while LogoImage.Parent do
+        TweenService:Create(LogoImage, TweenInfo.new(1.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
+            Position = UDim2.new(0.15, 0, 0.10, 0)
         }):Play()
-        
-        -- Efeito 3D (zoom in/out)
-        TweenService:Create(LogoImage, TweenInfo.new(1.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
-            Size = UDim2.new(0.8, 0, 0.8, 0),
-            Position = UDim2.new(0.1, 0, 0.1, 0)
+        task.wait(1.5)
+        TweenService:Create(LogoImage, TweenInfo.new(1.5, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
+            Position = UDim2.new(0.15, 0, 0.20, 0)
         }):Play()
-        
-        task.wait(1.25)
-        
-        TweenService:Create(LogoImage, TweenInfo.new(1.25, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), {
-            Size = UDim2.new(0.7, 0, 0.7, 0),
-            Position = UDim2.new(0.15, 0, 0.15, 0)
-        }):Play()
-        
-        task.wait(1.25)
-        LogoFrame.Rotation = 0
+        task.wait(1.5)
     end
 end)
 
-print("✅ BATATA HUB Key System v2.3 carregado!")
+print("✅ SYLAX HUB Key System v2.3 carregado!")
 print("🔑 Key: " .. CONFIG.KEY)
 print("💬 Discord: " .. CONFIG.DISCORD_USERNAME)
